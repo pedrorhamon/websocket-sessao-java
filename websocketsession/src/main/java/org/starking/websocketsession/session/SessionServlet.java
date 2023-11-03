@@ -6,6 +6,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * @author pedroRhamon
@@ -16,8 +17,11 @@ public class SessionServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		String username = req.getParameter("username");
+		Boolean blockUser = Boolean.parseBoolean(req.getParameter("blockUser"));
+		
+		HttpSession session = req.getSession();
+		session.setAttribute("username", username);
 	}
 	
 	
